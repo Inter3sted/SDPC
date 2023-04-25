@@ -5,6 +5,7 @@ Simple prompt combiner for Stable Diffusion, combines positive prompts of PNGs f
 > Removes duplicate prompts
 
 Use [this website](https://www.dcode.fr/png-chunks) to check the PNG chunks beforehand, if you'd like. 
+For further research on PNG chunks: [Chunks] (https://www.w3.org/TR/PNG-Chunks.html)
 
 All you have to do is:
 1. create a folder
