@@ -78,9 +78,10 @@ def extract_tags():
             extracted_tags = []
             if metadata is not None:
                 metadata_list = extract_metadata_string(metadata).split(',')
-                num_tags_per_image = int(len(metadata_list) * tag_extraction_ratio)
-                extracted_tags.extend(random.sample(metadata_list, num_tags_per_image))
+                extracted_tags = sorted([tag.strip() for tag in metadata_list])
 
+            # sort the extracted tags in alphabetical order
+            extracted_tags.sort()
             # render the template with the extracted tags
             return render_template('extract_tags.html', tags=extracted_tags, uploaded_image_url=uploaded_image_url)
 

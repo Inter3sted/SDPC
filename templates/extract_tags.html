@@ -5,19 +5,19 @@
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
-    <h1>Extract PNG Tags</h1>
     <form
       method="POST"
       enctype="multipart/form-data"
       action="{{ url_for('extract_tags') }}"
     >
+      <h1>Extract PNG Tags</h1>
       <label for="file">Select a PNG file to upload:</label>
       <input
         type="file"
         name="file"
         accept=".png"
         onchange="previewImage(event)"
-      /><br /><br />
+      /><br />
       <div class="image-container">
         {% if uploaded_image_url %}
         <img
@@ -56,7 +56,6 @@
       </ul>
       {% endif %}
     </div>
-
     <script>
       function previewImage(event) {
         var preview = document.getElementById("preview");
