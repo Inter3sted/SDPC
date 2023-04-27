@@ -52,7 +52,6 @@ def index():
     # Redirect to the extract_tags page
     return redirect(url_for('extract_tags'))
 
-# define the route for the tag extraction page
 @app.route('/extract_tags.html', methods=['GET', 'POST'])
 def extract_tags():
     
@@ -87,8 +86,14 @@ def extract_tags():
 
         print("File upload unsuccessful") # added for debugging
 
-    # if the request method is GET, simply render the form
-    return render_template('extract_tags.html', uploaded_image_url=uploaded_image_url)
+    # if the request method is GET, show the images from the UPLOAD_FOLDER
+    image_urls = []
+    for filename in os.listdir(app.config['UPLOAD_FOLDER']):
+        if allowed_file(filename):
+            url = url_for('static', filename='uploads/' + filename)
+            image_urls.append({'filename': filename, 'url': url})
+    return render_template('extract_tags.html', uploaded_image_url=uploaded_image_url, image_urls=image_urls)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
